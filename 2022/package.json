@@ -1,0 +1,12 @@
+{
+  "name": "2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "html-to-text": "^8.2.1",
+    "sanitize-html": "^2.7.3"
+  }
+}
