@@ -9,4 +9,8 @@ if ! (glow -h > /dev/null); then echo "\nGlow is required - install for your sys
 fi
 
 
-curl https://adventofcode.com/2022/day/$1 | node ./index.js | glow - -p
+if [ ! -f ./day_$1/prompt.day_$1.md ]
+then
+    curl https://adventofcode.com/2021/day/$1 | node ./index.js > ./day_$1/prompt.day_$1.md
+fi
+glow ./day_$1/prompt.day_$1.md -p
