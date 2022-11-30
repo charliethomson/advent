@@ -15,9 +15,9 @@ stdin.on("data", function (chunk) {
 });
 
 stdin.on("end", function () {
-  const mainData = data
-    .split('<article class="day-desc">')[1]
-    .split("</article>")[0];
+  const mainData = data.includes('<article class="day-desc">')
+    ? data.split('<article class="day-desc">')[1].split("</article>")[0]
+    : data;
   const shtml = sanitizeHTML(mainData, {
     allowedTags: sanitizeHTML.defaults.allowedTags.concat(["h1", "h2"]),
   });
