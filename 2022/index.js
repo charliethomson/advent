@@ -1,8 +1,7 @@
 // Paraphrased from https://github.com/jhuckaby/clipdown, thanks!
 
-const breakdance = require("breakdance");
-const { htmlToText } = require("html-to-text");
 const sanitizeHTML = require("sanitize-html");
+const { NodeHtmlMarkdown } = require("node-html-markdown");
 
 // var hex = RegExp.$1;
 
@@ -16,11 +15,18 @@ stdin.on("data", function (chunk) {
 });
 
 stdin.on("end", function () {
-  var shtml = sanitizeHTML(data, {
-    // sanitize-html doesn't allow h1 or h2 by default (facepalm) so we have to add them
+  const mainData = data
+    .split('<article class="day-desc">')[1]
+    .split("</article>")[0];
+  const shtml = sanitizeHTML(mainData, {
     allowedTags: sanitizeHTML.defaults.allowedTags.concat(["h1", "h2"]),
   });
-  console.log(htmlToText(shtml));
+  const md = NodeHtmlMarkdown.translate(shtml, {
+    emDelimiter: "**",
+    useLinkReferenceDefinitions: true,
+  });
+
+  console.log(md);
 });
 
 stdin.on("error", console.error);

@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "html-to-text": "^8.2.1",
+    "node-html-markdown": "^1.2.2",
     "sanitize-html": "^2.7.3"
   }
 }
