@@ -1,11 +1,11 @@
 
 simple_lines =
-    "./day_21/input.part2.simple.txt"
+    "./day_21/input.simple.txt"
     |> File.stream!()
     |> Enum.map(&String.trim/1)
 
 problem_lines =
-    "./day_21/input.part2.problem.txt"
+    "./day_21/input.problem.txt"
     |> File.stream!()
     |> Enum.map(&String.trim/1)
     
